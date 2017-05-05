@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Wiki Source Editor</title>
+    <meta name="title" content="Wiki Source Editor">
+    <meta name="twitter:title" content="Wiki Source Editor">
+    <meta property="og:title" content="Wiki Source Editor">
+    <meta name="description" content="A tool that makes collaborating on Github wikis easier.">
+    <meta property="og:description" content="A tool that makes collaborating on Github wikis easier.">
+
+    <meta name="keywords" content="Github, Wiki, Source, Editor, Raw, Collaborate" lang="en">
+    <meta name="language" content="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="resources/images/wse-icon.png">
+
+    <meta property="og:site_name" content="sethclydesdale.github.io">
+    <meta property="og:url" content="https://sethclydesdale.github.io/wiki-source-editor/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://sethclydesdale.github.io/wiki-source-editor/resources/images/wse-thumb.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@SethC1995">
+
+    <link rel="stylesheet" href="resources/stylesheet.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jsdiff/1.4.0/diff.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    <script src="resources/utils.js"></script>
+  </head>
+
+  <body>
+    <header class="dark clear">
+      <h1 id="page-title"><a href="#">Wiki Source Editor</a></h1>
+      <a id="fork-me" href="#">Fork Me</a>
+    </header>
+
+    <div id="content">
+      <div id="step-1" class="content-block" data-hidden="false">
+        <h2 class="content-title"><i class="fa fa-arrow-right"></i> Get a Wiki</h2>
+        <p>Enter the link of a Github repository in the input field below to view and edit its wiki's source code.</p>
+        <div class="clear">
+          <input id="get-wiki-url" class="left" type="text" placeholder="github.com/JohnDoe/foo-bar">
+          <button id="get-wiki" class="left" type="button"><i class="fa fa-arrow-right"></i>Get</button>
+        </div>
+
+        <p id="wiki-results" class="center"></p>
+
+        <div class="center">
+         <button id="random-repo" type="button"><i class="fa fa-magic"></i>Surprise me</button>
+       </div>
+      </div>
+
+
+      <div id="step-2" class="content-block" data-hidden="true">
+        <h2 class="content-title"><i class="fa fa-book"></i> Select a Page</h2>
+        <p>Choose a page from the list below to view and edit its source code.</p>
+
+        <p id="wiki-pages-info"></p>
+
+        <div id="wiki-page-wrapper">
+          <div id="wiki-page-filter">
+            <input id="wiki-page-search" type="text" value="" placeholder="Find a page...">
+          </div>
+          <ol id="wiki-pages"></ol>
+        </div>
+
+        <div class="buttons clear">
+          <button class="back-button left" type="button"><i class="fa fa-arrow-left"></i>Back</button>
+          <button class="copy-button right" type="button" data-success='<i class="fa fa-check"></i>Copied!'><i class="fa fa-clipboard"></i>Copy URL</button>
+        </div>
+      </div>
+
+
+      <div id="step-3" class="content-block" data-hidden="true">
+        <h2 class="content-title"><i class="fa fa-edit"></i> View, Edit, and Share</h2>
+        <p>The source code of the page you selected will be available in the editor below. Any changes you make will be saved to the <strong>Copy URL</strong> button so you can share your modifications with others.</p>
+
+        <div id="wiki-editor">
+          <h3 id="wiki-page-title" class="section-title"></h3>
+          <div id="wiki-editor-inner" class="container">
+            <div id="wiki-page-actions" class="wiki-actions"></div>
+            <textarea id="wiki-page-source"></textarea>
+          </div>
+        </div>
+
+        <div class="buttons clear">
+          <button class="back-button left" type="button"><i class="fa fa-arrow-left"></i>Back</button>
+          <button class="copy-button right" type="button" data-success='<i class="fa fa-check"></i>Copied!'><i class="fa fa-clipboard"></i>Copy URL</button>
+          <button id="view-diff" class="right" type="button"><i class="fa fa-files-o"></i>View Diff</button>
+        </div>
+
+        <h3 id="wiki-diff-title" class="section-title">Difference</h3>
+        <p>Click <strong>View Diff</strong> to compare the original and modified wiki source.</p>
+        <div id="diff-box" class="container">
+          <div id="diff-views" class="wiki-actions"><a href="#diff-raw">Raw</a><a class="active" href="#diff-rendered">Rendered</a></div>
+          <div id="diff-rendered" class="diff-content"></div>
+          <div id="diff-raw" class="diff-content" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="thanks" class="content-block monotone center">
+      <p><i class="fa fa-heart"></i> This project was made possible thanks to</p>
+      <p><a href="https://github.com/Rob--W/cors-anywhere" target="_blank">CORS Anywhere</a>, <a href="https://github.com/NextStepWebs/simplemde-markdown-editor/" target="_blank">SimpleMDE</a>, <a href="https://github.com/zenorocha/clipboard.js" target="_blank">Clipboard.js</a>, <a href="https://github.com/kpdecker/jsdiff" target="_blank">jsdiff</a>, <a href="https://github.com/pieroxy/lz-string" target="_blank">lz-string</a>, <a href="https://github.com/FortAwesome/Font-Awesome" target="_blank">FontAwesome</a>, and the awesome people at <a href="https://github.com/">Github</a>.</p>
+    </div>
+
+    <footer class="dark clear">
+      <div class="left">
+        <a href="/privacy/">Privacy</a>
+      </div>
+
+      <div class="right">
+        Created by <a href="https://github.com/SethClydesdale">Seth Clydesdale</a>
+      </div>
+    </footer>
+
+    <script src="resources/javascript.js"></script>
+  </body>
+</html>
