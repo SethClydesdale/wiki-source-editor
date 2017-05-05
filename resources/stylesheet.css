@@ -138,6 +138,11 @@ footer {
   margin-top:15px;
 }
 
+.footer-sep {
+  font-size:6px;
+  vertical-align:2px;
+}
+
 #thanks p { font-size:14px; }
 
 
@@ -358,3 +363,23 @@ button:active {
 .highlight-addition { background-color:rgba(0, 255, 0, 0.08); }
 .highlight-deletion { background-color:rgba(255, 0, 0, 0.08); }
 .highlight-addition.highlight-deletion { background-color:rgba(255, 255, 0, 0.08); }
+
+
+/* sitemap link lists */
+.site-links {
+  font-size:16px;
+  list-style-type:none;
+}
+
+.site-links li { position:relative; }
+.site-links li:before {
+  content:"";
+  background:#000;
+  position:absolute;
+  height:8px;
+  width:8px;
+  top:4px;
+  left:-15px;
+}
+
+.site-links li:hover:before { background:#07C; }
