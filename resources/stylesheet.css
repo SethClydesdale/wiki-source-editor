@@ -1,3 +1,17 @@
+/* animations */
+@keyframes ellipsis {
+  0% { content:"" }
+  33% { content:"." }
+  66% { content:".." }
+  100% { content:"..." }
+}
+
+.ellipsis:after {
+  content:"";
+  animation:ellipsis 1.5s linear infinite;
+}
+
+
 /* general styles */
 * { box-sizing:border-box; }
 
@@ -372,21 +386,34 @@ button:active {
 .highlight-addition.highlight-deletion { background-color:rgba(255, 255, 0, 0.08); }
 
 
-/* sitemap link lists */
+/* link lists */
 .site-links {
   font-size:16px;
   list-style-type:none;
 }
 
-.site-links li { position:relative; }
+.site-links li {
+  position:relative;
+  padding:6px 0;
+}
+
 .site-links li:before {
   content:"";
   background:#000;
   position:absolute;
   height:8px;
   width:8px;
-  top:4px;
+  top:10px;
   left:-15px;
 }
 
 .site-links li:hover:before { background:#07C; }
+
+
+/* help styles */
+.fig-num {
+  font-size:12px;
+  font-weight:bold;
+  vertical-align:super;
+  margin:1px;
+}

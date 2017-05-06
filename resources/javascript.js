@@ -44,7 +44,7 @@
           repo = url[1];
 
           url = 'https://github.com/' + user + '/' + repo + '/wiki';
-          result.innerHTML = 'Getting ' + url + '...';
+          result.innerHTML = 'Getting ' + url + '<span class="ellipsis">.</span>';
 
           // gets the wiki page with CORS Anywhere since big brother github.com wont play with little brother github.io
           // see https://github.com/Rob--W/cors-anywhere/ for more info
