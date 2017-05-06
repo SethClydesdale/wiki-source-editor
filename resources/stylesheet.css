@@ -228,7 +228,9 @@ button {
   font-size:16px;
   font-weight:bold;
   text-transform:uppercase;
-  padding:12px 24px 12px 40px;
+  padding:0 24px 0 40px;
+  height:44px;
+  line-height:40px;
   position:relative;
   cursor:pointer;
 }
@@ -256,14 +258,15 @@ button:active {
 #get-wiki {
   width:20%;
   margin-left:-1px;
-  padding:12px 24px;
+  padding:0 24px;
   border-radius:0 3px 3px 0;
 }
 
 #get-wiki-url {
   font-size:16px;
   width:80%;
-  padding:12px;
+  padding:0 12px;
+  height:44px;
   border-radius:3px 0 0 3px;
 }
 
@@ -392,10 +395,8 @@ button:active {
   list-style-type:none;
 }
 
-.site-links li {
-  position:relative;
-  padding:6px 0;
-}
+.site-links li { position:relative; }
+.site-links li a { padding:6px 0; }
 
 .site-links li:before {
   content:"";
