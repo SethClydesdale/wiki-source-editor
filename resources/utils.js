@@ -1,4 +1,6 @@
 function get (url, callback, opts) {
+  opts = opts || {};
+
   var xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
@@ -41,7 +43,7 @@ function get (url, callback, opts) {
 
 // https://github.com/Rob--W/cors-anywhere/
 (function() {
-  var cors_api_host = 'cors-anywhere.herokuapp.com';
+  var cors_api_host = 'wse-cors-anywhere.herokuapp.com';
   var cors_api_url = 'https://' + cors_api_host + '/';
   var slice = [].slice;
   var origin = window.location.protocol + '//' + window.location.host;

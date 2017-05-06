@@ -358,7 +358,10 @@ button:active {
 }
 
 .diff-addition { color:#090 }
-.diff-deletion { color:#F00 }
+.diff-deletion {
+  color:#F00;
+  text-decoration:line-through;
+}
 
 .highlight-addition { background-color:rgba(0, 255, 0, 0.08); }
 .highlight-deletion { background-color:rgba(255, 0, 0, 0.08); }
