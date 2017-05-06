@@ -1,6 +1,6 @@
 # Wiki Source Editor
 
-Wiki Source Editor is a tool that allows you to view and edit the source code of any public wiki on Github. More importantly, it enables you to share your modifications with others, so that you can collaborate on a wiki together.
+Wiki Source Editor is a tool that allows you to view and edit the source code of any public wiki on Github. More importantly, it gives you the ability to share your modifications with others, so that you can collaborate on a wiki together.
 
 ## How to Use
 
