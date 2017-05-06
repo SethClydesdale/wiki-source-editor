@@ -51,8 +51,12 @@ a:active { color:#028; }
 }
 
 
-/* hidden elements */
+/* hidden / disabled elements */
 [data-hidden="true"] { display:none; }
+[data-disabled="true"] {
+  opacity:0.7;
+  pointer-events:none;
+}
 
 
 /* header styles */

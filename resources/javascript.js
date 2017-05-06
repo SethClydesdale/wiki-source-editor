@@ -32,13 +32,14 @@
             }
           };
 
-
       // only accept URLs from github
       if (url && /github\.com/.test(url)) {
         url = url.replace(/^http(?:s|):\/\/|github\.com\//g, '').split('/');
 
         // url[0] and [1] should be the user and repo. (i.e. github.com/SethClydesdale[0]/wiki-source-editor[1]/)
         if (url[0] && url[1]) {
+          gh_wiki.disableButtons(true);
+
           user = url[0];
           repo = url[1];
 
@@ -80,6 +81,8 @@
             } else {
               result.innerHTML = gh_wiki.error.not_found.replace(/\{URL\}|\{REPO\}/g, parseVars);
             }
+
+            gh_wiki.disableButtons(false);
           }, {
             any_origin : true
           });
@@ -290,7 +293,6 @@
 
     // get a random wiki from the showcases
     random : {
-      button : document.getElementById('random-repo'),
 
       showcases : [
         'devops-tools',
@@ -350,17 +352,35 @@
       ],
 
       roll : function () {
+        gh_wiki.disableButtons(true);
+
         get('https://github.com/showcases/' + gh_wiki.random.showcases[Math.floor(Math.random() * gh_wiki.random.showcases.length)], function (data) {
           if (data) {
             var wiki = data.querySelectorAll('.repo-list-item .mb-1 a');
             document.getElementById('get-wiki-url').value = 'github.com' + wiki[Math.floor(Math.random() * wiki.length)].getAttribute('href');
             gh_wiki.get();
+
+            gh_wiki.disableButtons(false);
           }
         }, {
           any_origin : true
         });
       }
 
+    },
+
+
+    // disables / enables buttons that use any_origin
+    disableButtons : function (disabled) {
+      var buttons = [
+        document.getElementById('get-wiki'),
+        document.getElementById('random-repo')
+
+      ], i = 0, j = buttons.length;
+
+      for (; i < j; i++) {
+        buttons[i].dataset.disabled = disabled;
+      }
     }
 
   };
@@ -379,7 +399,7 @@
 
 
   // get a random repo
-  gh_wiki.random.button.addEventListener('click', gh_wiki.random.roll);
+  document.getElementById('random-repo').addEventListener('click', gh_wiki.random.roll);
 
 
   // add event listener to page filter
