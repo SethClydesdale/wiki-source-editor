@@ -269,6 +269,10 @@
 
         if (!gh_wiki.data.valueChanged || (gh_wiki.data.valueChanged && confirm('Are you sure you want to go back? Any changes you made will be lost.'))) {
           if (gh_wiki.step == 3) {
+            delete gh_wiki.data.page;
+            delete gh_wiki.data.value;
+            delete gh_wiki.data.diff;
+
             if (gh_wiki.textarea.isPreviewActive()) {
               document.querySelector('.editor-toolbar .fa-eye').click();
             }
