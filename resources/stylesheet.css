@@ -28,6 +28,7 @@ body {
 }
 
 #content { flex:1 0 auto; }
+img { max-width:100%; }
 
 
 /* link styles */
@@ -396,7 +397,10 @@ button:active {
 }
 
 .site-links li { position:relative; }
-.site-links li a { padding:6px 0; }
+.site-links li a {
+  display:inline-block;
+  padding:6px 0;
+}
 
 .site-links li:before {
   content:"";
@@ -417,4 +421,12 @@ button:active {
   font-weight:bold;
   vertical-align:super;
   margin:1px;
+}
+
+.help-image {
+  border:1px solid #CCC;
+  border-radius:3px;
+  display:block;
+  max-width:80%;
+  overflow:hidden;
 }
