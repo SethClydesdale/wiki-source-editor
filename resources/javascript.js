@@ -352,9 +352,12 @@
       ],
 
       roll : function () {
+        var showcase = 'https://github.com/showcases/' + gh_wiki.random.showcases[Math.floor(Math.random() * gh_wiki.random.showcases.length)];
+
+        document.getElementById('wiki-results').innerHTML = 'Getting '+ showcase + '<span class="ellipsis">.</span>';
         gh_wiki.disableButtons(true);
 
-        get('https://github.com/showcases/' + gh_wiki.random.showcases[Math.floor(Math.random() * gh_wiki.random.showcases.length)], function (data) {
+        get(showcase, function (data) {
           if (data) {
             var wiki = data.querySelectorAll('.repo-list-item .mb-1 a');
             document.getElementById('get-wiki-url').value = 'github.com' + wiki[Math.floor(Math.random() * wiki.length)].getAttribute('href');
