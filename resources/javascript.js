@@ -299,71 +299,49 @@
     random : {
 
       showcases : [
-        'devops-tools',
-        'virtual-reality',
-        'software-defined-radio',
-        'tools-for-open-source',
-        'open-source-integrations',
-        'serverless-architecture',
-        'emoji',
-        'web-application-frameworks',
-        'hacking-minecraft',
-        'web-accessibility',
-        'github-browser-extensions',
-        'great-for-new-contributors',
-        'productivity-tools',
-        'javascript-game-engines',
-        'projects-that-power-github-for-mac',
-        'game-engines',
-        'debug-politics',
-        'programming-languages',
-        'projects-with-great-wikis',
-        'music',
-        'government',
-        'projects-that-power-github',
-        'social-impact',
-        'data-visualization',
-        'science',
-        'swift',
-        'open-data',
-        'fonts',
-        'text-editors',
-        'fabric-mobile-developer-tools',
-        'package-managers',
         'clean-code-linters',
-        'open-source-operating-systems',
-        'open-journalism',
-        'machine-learning',
-        'front-end-javascript-frameworks',
-        'ember-projects',
-        'made-in-africa',
-        'security',
         'design-essentials',
-        'universal-2nd-factor',
+        'devops-tools',
+        'front-end-javascript-frameworks',
+        'game-engines',
+        'machine-learning',
+        'github-browser-extensions',
         'github-pages-examples',
-        'projects-that-power-github-for-windows',
-        'web-games',
-        'game-off-winners',
+        'government',
+        'hacking-minecraft',
+        'choosing-projects',
+        'javascript-game-engines',
+        'protect-user-data',
+        'learn-to-code',
+        'made-in-africa',
+        'music',
+        'net-neutrality',
+        'open-data',
+        'open-journalism',
         'open-source-organizations',
         'policies',
-        'css-preprocessors',
-        'icon-fonts',
-        'video-tools',
-        'writing',
-        '3d-modeling',
-        'nosql-databases',
-        'software-development-tools'
+        'programming-languages',
+        'projects-that-power-github',
+        'social-impact',
+        'software-defined-radio',
+        'software-development-tools',
+        'software-in-science',
+        'productivity-tools',
+        'text-editors',
+        'tools-for-open-source',
+        'web-accessibility',
+        'web-games'
       ],
 
       roll : function () {
-        var showcase = 'https://github.com/showcases/' + gh_wiki.random.showcases[Math.floor(Math.random() * gh_wiki.random.showcases.length)];
+        var showcase = 'https://github.com/collections/' + gh_wiki.random.showcases[Math.floor(Math.random() * gh_wiki.random.showcases.length)];
 
         document.getElementById('wiki-results').innerHTML = 'Getting '+ showcase + '<span class="ellipsis">.</span>';
         gh_wiki.disableButtons(true);
 
         get(showcase, function (data) {
           if (data) {
-            var wiki = data.querySelectorAll('.repo-list-item .mb-1 a');
+            var wiki = data.querySelectorAll('.f3 > a');
             document.getElementById('get-wiki-url').value = 'github.com' + wiki[Math.floor(Math.random() * wiki.length)].getAttribute('href');
             gh_wiki.get();
 
