@@ -295,77 +295,9 @@
     },
 
 
-    // get a random wiki from the showcases
-    random : {
-
-      showcases : [
-        'clean-code-linters',
-        'design-essentials',
-        'devops-tools',
-        'front-end-javascript-frameworks',
-        'game-engines',
-        'machine-learning',
-        'github-browser-extensions',
-        'github-pages-examples',
-        'government',
-        'hacking-minecraft',
-        'choosing-projects',
-        'javascript-game-engines',
-        'protect-user-data',
-        'learn-to-code',
-        'made-in-africa',
-        'music',
-        'net-neutrality',
-        'open-data',
-        'open-journalism',
-        'open-source-organizations',
-        'policies',
-        'programming-languages',
-        'projects-that-power-github',
-        'social-impact',
-        'software-defined-radio',
-        'software-development-tools',
-        'software-in-science',
-        'productivity-tools',
-        'text-editors',
-        'tools-for-open-source',
-        'web-accessibility',
-        'web-games'
-      ],
-
-      roll : function () {
-        var showcase = 'https://github.com/collections/' + gh_wiki.random.showcases[Math.floor(Math.random() * gh_wiki.random.showcases.length)];
-
-        document.getElementById('wiki-results').innerHTML = 'Getting '+ showcase + '<span class="ellipsis">.</span>';
-        gh_wiki.disableButtons(true);
-
-        get(showcase, function (data) {
-          if (data) {
-            var wiki = data.querySelectorAll('.f3 > a');
-            document.getElementById('get-wiki-url').value = 'github.com' + wiki[Math.floor(Math.random() * wiki.length)].getAttribute('href');
-            gh_wiki.get();
-
-            gh_wiki.disableButtons(false);
-          }
-        }, {
-          any_origin : true
-        });
-      }
-
-    },
-
-
     // disables / enables buttons that use any_origin
     disableButtons : function (disabled) {
-      var buttons = [
-        document.getElementById('get-wiki'),
-        document.getElementById('random-repo')
-
-      ], i = 0, j = buttons.length;
-
-      for (; i < j; i++) {
-        buttons[i].dataset.disabled = disabled;
-      }
+      document.getElementById('get-wiki').dataset.disabled = disabled;
     }
 
   };
@@ -381,10 +313,6 @@
       gh_wiki.get();
     }
   });
-
-
-  // get a random repo
-  document.getElementById('random-repo').addEventListener('click', gh_wiki.random.roll);
 
 
   // add event listener to page filter
